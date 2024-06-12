@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Information Form</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h2 class="mt-4 mb-4">Student Information Form</h2>
+    <form>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="rollNumber">Roll Number:</label>
+            <input type="text" class="form-control" id="rollNumber" name="rollNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <select class="form-control" id="department" name="department" onchange="updateSectionOptions()" required>
+                <option value="">-- Select --</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="CSM">CSM</option>
+                <!-- Add more department options if needed -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="section">Section:</label>
+            <select class="form-control" id="section" name="section" required>
+                <option value="">-- Select --</option>
+                <!-- Section options will be dynamically updated based on the selected department -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+        <div class="form-group">
+            <label for="fsNonFS">FS or Non-FS:</label>
+            <select class="form-control" id="fsNonFS" name="fsNonFS" required>
+                <option value="">-- Select --</option>
+                <option value="FS">FS</option>
+                <option value="Non-FS">Non-FS</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script>
+function updateSectionOptions() {
+    var departmentSelect = document.getElementById("department");
+    var sectionSelect = document.getElementById("section");
+    var department = departmentSelect.value;
+    sectionSelect.innerHTML = ""; // Clear existing options
+    
+    if (department === "Computer Science") {
+        sectionSelect.innerHTML = `<option value="">-- Select --</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="c">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>`;
+    } else if (department === "CSM") {
+        sectionSelect.innerHTML = `<option value="">-- Select --</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>`;
+    } // Add more conditions for other departments if needed
+}
+</script>
+
+</body>
+</html>
